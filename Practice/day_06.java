@@ -50,18 +50,18 @@ public class Main
 		return false;
 	};
 	// Print all subsequence
-	    public void printAllSubsequence(String str, HashSet<String> res) {
-        if(str.length() == 1){
-            return;
-        }
-        for(int index=0;index<str.length();index++){
-            String temp = str.substring(0, index) + str.substring(index+1);
-            
-            if(temp.length()>0){
-                res.add(temp);
-                printAllSubsequence(temp, res);
-            }
-        }
-        return;
+	public void printAllSubsequence(String str, HashSet<String> res) {
+		if(str.length() == 1){
+		    return;
+		}
+		for(int index=0;index<str.length();index++){
+		    String temp = str.substring(0, index) + str.substring(index+1);
+
+		    if(temp.length()>0){
+			res.add(temp);
+			printAllSubsequence(temp, res);
+		    }
+		}
+		return;
 	};
 }

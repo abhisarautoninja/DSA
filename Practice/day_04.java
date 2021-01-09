@@ -61,3 +61,55 @@ class Solution {
         return true;
     }
 }
+
+//subarray sum equal to k
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        int sum = 0, count=0;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        map.put(0,1);
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
+            if(map.containsKey(sum-k)){
+                count+=map.get(sum-k);
+            }
+            map.put(sum, map.getOrDefault(sum,0)+1);
+        }
+        return count;
+    }
+}
+
+//subarray sum divisible by k (incomplete)
+class Solution {
+    public int subarraysDivByK(int[] A, int K) {
+        int sum = 0, count=0;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        map.put(0,1);
+        for(int i=0;i<A.length;i++){
+            sum+=A[i];
+            int t = 1;
+            while((sum-(K*t))>0){
+                if(map.containsKey(sum-(t*K))){
+                    count+=map.get(sum-(t*K));
+                }
+                t++;
+            }
+            
+            map.put(sum, map.getOrDefault(sum,0)+1);
+        }
+        return count;
+    }
+    // public int subarraySum(int[] nums, int k) {
+    //     int sum = 0, count=0;
+    //     HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+    //     map.put(0,1);
+    //     for(int i=0;i<nums.length;i++){
+    //         sum+=nums[i];
+    //         if(map.containsKey(sum-k)){
+    //             count+=map.get(sum-k);
+    //         }
+    //         map.put(sum, map.getOrDefault(sum,0)+1);
+    //     }
+    //     return count;
+    // }
+}
